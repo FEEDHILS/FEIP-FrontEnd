@@ -1,3 +1,8 @@
+:root {
+    --font-montserrat: Montserrat, sans-serif;
+    --font-sans: Open Sans, sans-serif; 
+}
+
 body {
     font-size: 21px;
 }
@@ -48,8 +53,9 @@ main {
     /* margin: 0px 5px; */
     background-color: orange;
     width: 100%;
-    font-size: 32px;
+    /* font-size: 32px; */
     justify-items: center;
+    font-family: var(--font-montserrat);
 }
 
 .third-block {
@@ -59,4 +65,8 @@ main {
     width:25%;
     background-color: green;
     /* justify-self: center; */
+}
+
+.message {
+    font-family: var(--font-sans);
 }
