@@ -1,5 +1,5 @@
 <template>
-    <div class="something">
+    <div class="root">
         <h1 class="banner">Banner</h1>  
         <h2>Hello World!</h2>
         <p>Dobro Podjalovat..</p>
@@ -10,7 +10,7 @@
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use './style.scss' as main;
 
 .something {
