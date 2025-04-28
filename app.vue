@@ -31,26 +31,6 @@ import FooterComponent from "~/footer.vue"
 
   html, body, #__nuxt, .root {
     height: 100%;
-  }
-
-  .root {
-    // display: grid;
-    // grid-template-rows: min-content auto min-content;
-    // flex-flow: column;
-  }
-
-  main {
-    // display: flex;
-    // flex-grow: 1;
-    // flex-direction: row;
-    // flex-direction: row;
-    // justify-content: center;
-    // align-items: center;
-    
-    // gap: 5%;
-    // padding: 0px 50px;
-    // height: 20rem;
-  }
-  
+  } 
 
 </style>
