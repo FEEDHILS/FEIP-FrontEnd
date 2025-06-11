@@ -1,36 +1,55 @@
 <script setup>
 import HeaderComponent from "~/header.vue"
-import BannerComponent from "~/banner.vue"
 import FooterComponent from "~/footer.vue"
-
-
 </script>
 
 <template>
-  <div class="root">
+  <div class="root-app">
     <NuxtRouteAnnouncer />
     <header>
       <HeaderComponent />
     </header>
-    <!-- <main>
-      Hello World
+    
+    <main>
+      <p>Hello World</p>
     </main>
+    
     <footer>
       <FooterComponent />
-    </footer> -->
+    </footer>
   </div>
 </template>
 
 <style lang="scss">
+  @use '/stuff.scss' as *;
   @import '@csstools/normalize.css/opinionated.css';
-
+  
   :root {
-  font-family: Montserrat, sans-serif;
-  font-size: 2vmin;
+  font-family: $secondary-font;
+  font-size: clamp(0.9rem, 1.1vw, 2rem);
+  }
+  
+  html, body, #__nuxt, .root-app {
+    height: 100%;
   }
 
-  html, body, #__nuxt, .root {
-    height: 100%;
-  } 
+
+  .root-app {
+    display: flex;
+    flex-flow: column;
+  }
+
+  main {
+    flex-grow: 1;
+  }
+
+  header, footer {
+    font-size: 0.9rem;
+  }
+
+
+  a {
+    @include removeLinkTagStyle;
+  }
 
 </style>

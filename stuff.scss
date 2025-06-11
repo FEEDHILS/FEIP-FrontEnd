@@ -1,0 +1,27 @@
+$primary-font: "Open Sans", sans-serif;
+$secondary-font: Montserrat, sans-serif;
+
+@mixin submitBtn {
+  font-family: Montserrat, 'sans-serif';
+  background-color: #029F59;
+  border-radius: 12px;
+  border: 0;
+  color: white;
+  padding: 16px 50px;
+}
+
+@mixin textbleak($size: .85em) {
+  color:#a8b5b3;
+  font-size: $size;
+}
+  
+@mixin removeLinkTagStyle() {
+  color: inherit;
+  text-decoration: none;
+  
+  &:hover, &:focus, &:active {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+  }
+}

@@ -1,14 +1,14 @@
 <template>
     <div class="root">
 
-        <img src="/img/logo.svg" alt="zagdom">
+        <img src="/img/logo.svg" alt="zagdom" class="logo">
         
         <div class="spacer-1"></div>
         
         <div class="options">
-            <p>Реализованные проекты</p>
-            <p>Новости</p>
-            <p>Контакты</p>
+            <a href="">Реализованные проекты</a>
+            <a href="">Новости</a>
+            <a href="">Контакты</a>
         </div>
 
 
@@ -25,34 +25,30 @@
 </template>
 
 <style lang="scss" scoped>
-
+    @use "/stuff.scss" as stuff;
     .root {
-        // Что в данной ситуации лучше, grid или flex?
-        // Через grid я смог удобно в одну строчку расположить все элементы
-        // Однако я добавил два пустых div'а, отвечающие за разные отступы (это хорошо или плохо?)
-        // Используя flex я могу добавить разные отступы через gap, однако это немного громозднее и больше...
         display: grid;
-        grid-template-columns: max-content 80px auto max-content 24px max-content;
+        grid-template-columns: max-content 6% auto max-content 2.5% minmax(200px, max-content);
 
         align-items: center;
-        padding: 24px 88px 24px 88px;
-        font-size: 1rem;
-        background-color: whitesmoke; // лучше видно размеры
+        padding: 1.5% 5%;
+        background-color: rgb(224, 224, 224); // лучше видно размеры
         color: #666666;
     }
 
-// Left Side of Header
+    
     .options {
-        // flex-grow: 1;
         display: flex;
-        column-gap: 24px;
+        column-gap: 1.5em;
+        row-gap: 1em;
+        flex-wrap: wrap;
     }
 
-// Right Side of Header
     .number {
         display: flex;
         align-items: center;
         gap: 8px;
+        margin-left: 3vw;
     }
 
     .phoneIcon {
@@ -60,27 +56,37 @@
     }
    
     .submitBtn {
-        background-color: #029F59;
-        border-radius: 10px;
-        border: 0px;
-        color: white;
-        font-size: 1rem;              
-        padding: 16px 50px 16px 50px; // В фигме у кнопки указан padding-left (right) 40px, однако
-                                    // Там также указан gap 10px... Значит ли это что padding: 50px?                                 
-                                    // с 50px кнопка выглядет более похожей на макет... 
+        @include stuff.submitBtn;
+        
+        width: 100%;
+        justify-self: center;
     }
 
-    // Obsolete
-    // .left {
-    //     display: flex;
-    //     gap: 80px;
-    //     align-items: center;
-    // }
 
-    // .right {
-    //     display: flex;
-    //     align-items: center;
-    //     gap: 24px;
-    // }
+    @media (max-width : 767px) {
+        .submitBtn {
+            grid-column: -2 / -1;
+            padding: 16px 0;
+        }
 
+        .options {
+            flex-direction: column;
+            grid-column: 3 / 3; 
+            grid-row: 1 / -1; 
+        }
+
+        .logo {
+            grid-row: 1 / -1;
+        }
+
+        .root {
+            grid-template-columns: max-content 6% auto max-content;
+            grid-template-rows: 1fr 1fr;
+        }
+    }
+
+    // скоро здесь построим бургер кинг(меню)
+    @media (max-width : 625px) {
+
+    }
 </style>
