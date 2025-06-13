@@ -4,11 +4,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
-    ['@nuxtjs/google-fonts', {
-      families: {
-       'Open Sans': [400, 700],
-        Montserrat: true,
-      }
-    }],
+    '@nuxtjs/google-fonts',
+    'nuxt-svgo',
+    '@nuxt/ui',
   ],
+
+  googleFonts: {
+    families: {
+      'Open Sans': [400, 700],
+      Montserrat: true,
+    }
+  },
 })

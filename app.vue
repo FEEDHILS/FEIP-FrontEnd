@@ -1,21 +1,23 @@
 <script setup>
 import HeaderComponent from "~/header.vue"
 import FooterComponent from "~/footer.vue"
+import DrawerComponent from "~/drawer.vue"
 </script>
 
 <template>
   <div class="root-app">
     <NuxtRouteAnnouncer />
     <header>
-      <HeaderComponent />
+      <!-- <HeaderComponent /> -->
     </header>
     
     <main>
       <p>Hello World</p>
+      <DrawerComponent />
     </main>
     
     <footer>
-      <FooterComponent />
+      <!-- <FooterComponent /> -->
     </footer>
   </div>
 </template>
@@ -44,7 +46,7 @@ import FooterComponent from "~/footer.vue"
   }
 
   header, footer {
-    font-size: 0.9rem;
+    font-size: .85rem;
   }
 
 

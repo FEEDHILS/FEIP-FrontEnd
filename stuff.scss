@@ -25,3 +25,8 @@ $secondary-font: Montserrat, sans-serif;
     outline: none;
   }
 }
+
+
+@mixin medium-screen {
+  @media (max-width: 864px) { @content; }
+}

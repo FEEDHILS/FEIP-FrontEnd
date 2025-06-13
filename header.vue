@@ -1,3 +1,7 @@
+<script>
+import { RKButton } from 'reka-ui'
+</script>
+
 <template>
     <div class="root">
 
@@ -21,34 +25,44 @@
         
         <button class="submitBtn">Оставить заявку</button>
 
+        <div class="drawer-button">
+            <p>tut budet drawer</p>
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
     @use "/stuff.scss" as stuff;
+    $header-font-size: 1em;
+
     .root {
         display: grid;
-        grid-template-columns: max-content 6% auto max-content 2.5% minmax(200px, max-content);
-
+        grid-template-columns: max-content minmax(2rem, 5rem) 1fr max-content 2.5% max-content;
+        font-size: $header-font-size;
         align-items: center;
-        padding: 1.5% 5%;
+        padding: 25px 5%;
         background-color: rgb(224, 224, 224); // лучше видно размеры
         color: #666666;
     }
 
+    .drawer-button {
+        display: none;
+        // visibility:hidden;
+    }
     
     .options {
         display: flex;
         column-gap: 1.5em;
         row-gap: 1em;
         flex-wrap: wrap;
+        white-space: nowrap;
     }
 
     .number {
         display: flex;
         align-items: center;
         gap: 8px;
-        margin-left: 3vw;
+        margin-left: 5em;
     }
 
     .phoneIcon {
@@ -57,36 +71,21 @@
    
     .submitBtn {
         @include stuff.submitBtn;
-        
+        font-size: $header-font-size;
         width: 100%;
         justify-self: center;
     }
 
-
-    @media (max-width : 767px) {
-        .submitBtn {
-            grid-column: -2 / -1;
-            padding: 16px 0;
-        }
-
-        .options {
-            flex-direction: column;
-            grid-column: 3 / 3; 
-            grid-row: 1 / -1; 
-        }
-
-        .logo {
-            grid-row: 1 / -1;
-        }
-
+    @include stuff.medium-screen {
         .root {
-            grid-template-columns: max-content 6% auto max-content;
-            grid-template-rows: 1fr 1fr;
+            grid-template-columns: max-content auto max-content 2.5% max-content;
         }
-    }
 
-    // скоро здесь построим бургер кинг(меню)
-    @media (max-width : 625px) {
-
+        .drawer-button {
+            display: block;
+        }
+        .options, .submitBtn {
+            display: none;
+        }
     }
 </style>
