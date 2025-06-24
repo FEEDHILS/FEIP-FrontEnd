@@ -1,5 +1,5 @@
 <script>
-import { RKButton } from 'reka-ui'
+// import { RKButton } from 'reka-ui'
 </script>
 
 <template>
