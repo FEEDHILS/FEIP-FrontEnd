@@ -1,11 +1,11 @@
-<script>
-// import { RKButton } from 'reka-ui'
+<script setup> 
+import Logo from "/img/logo.svg"
 </script>
 
 <template>
     <div class="root">
 
-        <img src="/img/logo.svg" alt="zagdom" class="logo">
+        <Logo class="logo" :fontControlled="false" filled height="2.5rem" />
         
         <div class="spacer-1"></div>
         
@@ -40,7 +40,7 @@
         grid-template-columns: max-content minmax(2rem, 5rem) 1fr max-content 2.5% max-content;
         font-size: $header-font-size;
         align-items: center;
-        padding: 25px 5%;
+        padding: max(2.5vmin, 16px) 5%;
         background-color: rgb(224, 224, 224); // лучше видно размеры
         color: #666666;
     }
@@ -68,6 +68,7 @@
     .phoneIcon {
         height: 1em;
     }
+
    
     .submitBtn {
         @include stuff.submitBtn;

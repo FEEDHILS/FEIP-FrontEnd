@@ -8,16 +8,16 @@ import DrawerComponent from "~/drawer.vue"
   <div class="root-app">
     <NuxtRouteAnnouncer />
     <header>
-      <!-- <HeaderComponent /> -->
+      <HeaderComponent />
     </header>
     
     <main>
       <p>Hello World</p>
-      <DrawerComponent />
+      <!-- <DrawerComponent /> -->
     </main>
     
     <footer>
-      <!-- <FooterComponent /> -->
+      <FooterComponent />
     </footer>
   </div>
 </template>
@@ -28,7 +28,7 @@ import DrawerComponent from "~/drawer.vue"
   
   :root {
   font-family: $secondary-font;
-  font-size: clamp(0.9rem, 1.1vw, 2rem);
+  font-size: clamp(0.9rem, 1.1vmax, 2rem);
   }
   
   html, body, #__nuxt, .root-app {

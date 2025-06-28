@@ -1,6 +1,10 @@
+<script setup> 
+import Logo from "/img/logo_footer.svg"
+</script>
+
 <template>
     <div class="root">
-        <img src="/img/logo_footer.svg" alt="zagdom-logo">
+        <Logo alt="zagdom-logo" filled :fontControlled="false" class="logo" height="2.5rem"/>
 
         <div class="options">
             <a href="">Реализованные проекты</a>
