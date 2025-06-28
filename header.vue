@@ -23,7 +23,7 @@ import Logo from "/img/logo.svg"
         
         <div class="spacer-2"></div>
         
-        <button class="submitBtn">Оставить заявку</button>
+        <button class="submitBtn" type="submit">Оставить заявку</button>
 
         <div class="drawer-button">
             <p>tut budet drawer</p>

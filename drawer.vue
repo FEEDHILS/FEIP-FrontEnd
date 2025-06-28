@@ -1,172 +1,131 @@
-<script setup lang="ts">
-import { ref } from 'vue';
+<script setup>
 
-let isOpen = ref(true)
+import CloseIcon from "~/img/drawerCloseIcon.svg";
+
+import GeoIcon from "~/img/geo.svg";
+import EmailIcon from "~/img/email.svg";
+import TeleIcon from "~/img/telephone.svg";
 </script>
 
 <template>
-  <label>
-      <CheckboxRoot
-        v-model="checkboxOne"
-        class="CheckboxRoot"
-      >
-        <CheckboxIndicator class="CheckboxIndicator">
-          <Icon icon="radix-icons:check" />
-        </CheckboxIndicator>
-      </CheckboxRoot>
-      <span class="Label">Accept terms and conditions.</span>
-    </label>
+    <DialogRoot :modal=true>
+      <DialogPortal to=".root-app">
+          <DialogOverlay class="backdrop" />
+          <DialogContent class="drawer">
+            <DialogClose class="close"><CloseIcon :fontControlled="false" height="40%" filled /></DialogClose>
+
+            <div class="content">
+              <div class="options">
+                <a href="">Реализованные проекты</a>
+                <a href="">Новости</a>
+                <a href="">Контакты</a>
+              </div>
+
+              <div class="contacts">
+
+                <div class="number">
+                    <TeleIcon />
+                    <p>+7 (900) 900-90-90</p>
+                </div>
+
+                <div class="email">
+                    <EmailIcon />
+                    <p>info@gmail.com</p>
+                </div>
+
+                <div class="geo">
+                    <GeoIcon />
+                    <p>г. Владивосток <br> ул. Выселкова 49, стр. 3</p>
+                </div>
+
+              </div>
+
+
+            </div>
+
+          </DialogContent>
+      </DialogPortal>
+    </DialogRoot>
 </template>
 
 <style lang="scss" scoped>
-/* reset */
-button,
-fieldset,
-input {
-  all: unset;
-}
 
-.DialogOverlay {
-  background-color: black;
-  position: fixed;
-  inset: 0;
-  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.DialogContent {
-  background-color: white;
-  border-radius: 6px;
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90vw;
-  max-width: 450px;
-  max-height: 85vh;
-  padding: 25px;
-  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-.DialogContent:focus {
-  outline: none;
-}
-
-.DialogTitle {
-  margin: 0;
-  font-weight: 500;
-  color: green;
-  font-size: 17px;
-}
-
-.DialogDescription {
-  margin: 10px 0 20px;
-  color: greenyellow;
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-.Button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  padding: 0 15px;
-  font-size: 15px;
-  line-height: 1;
-  font-weight: 500;
-  height: 35px;
-}
-.Button.grass {
-  background-color: white;
-  color: green;
-  box-shadow: 0 2px 10px black;
-}
-.Button.grass:hover {
-  background-color: gray;
-}
-.Button.grass:focus {
-  box-shadow: 0 0 0 2px black;
-}
-.Button.green {
-  background-color: green;
-  color: green;
-}
-.Button.green:hover {
-  background-color: greenyellow;
-}
-.Button.green:focus {
-  box-shadow: 0 0 0 2px greenyellow;
-}
-
-.IconButton {
-  font-family: inherit;
-  border-radius: 100%;
-  height: 25px;
-  width: 25px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: green;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-.IconButton:hover {
-  background-color: green;
-}
-.IconButton:focus {
-  box-shadow: 0 0 0 2px green;
-}
-
-.Fieldset {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.Label {
-  font-size: 15px;
-  color: greenyellow;
-  width: 90px;
-  text-align: right;
-}
-
-.Input {
-  width: 100%;
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  padding: 0 10px;
-  font-size: 15px;
-  line-height: 1;
-  color: green;
-  box-shadow: 0 0 0 1px green;
-  height: 35px;
-}
-.Input:focus {
-  box-shadow: 0 0 0 2px greenyellow;
-}
-
-@keyframes overlayShow {
-  from {
-    opacity: 0;
+  .backdrop {
+    position: fixed;
+    background-color: black;
+    opacity: 0.25;
+    height: 100%;
+    inset: 0;
+    z-index: 30;
   }
-  to {
-    opacity: 1;
-  }
-}
+  
+  .drawer {
+    position: fixed;
+    top: 50%;
+    left: 100%;
+    translate: -100% -50%;
+    width: 60vw;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: start;
+    
+    z-index: 31;
+    color:white;
+    background-color: #029F59;
 
-@keyframes contentShow {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -48%) scale(0.96);
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+
+  .content {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    height: 100%;
+    margin: 3rem 0;
   }
-}
+
+  .close {
+    align-self: end;
+    width: 2.5rem;
+    height: 2.5rem;
+    // padding: 8px;
+    margin-top: 3rem;
+    border-width: 0;
+    border-radius: .3rem;
+    background-color: #FFFFFF33;
+    pointer-events: stroke;
+  }
+
+  .options {
+    display: flex;
+    font-size: 1.5em;
+    flex-flow: column;
+    gap: 2rem;
+  }
+
+  .contacts {
+    justify-self: end;
+    font-size: 1.2em;
+  }
+
+  .number, .email, .geo {
+        display: flex;
+        flex-direction: row;
+        gap: .5em;
+  }
+
+  .phoneIcon, .emailIcon, .geoIcon {
+    fill: white;
+    height: 1.1em;
+    background-color: black;
+  }
+
+  .number, .email, .geo {
+        p, a {
+            margin: 0;
+            margin-bottom: 2rem;
+        }
+    }
 </style>

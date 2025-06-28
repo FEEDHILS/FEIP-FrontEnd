@@ -45,7 +45,7 @@ import Logo from "/img/logo_footer.svg"
 
     .root {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: 1fr 1fr 1fr max-content;
         padding: 2rem clamp(.5rem, 6vw, 5rem);
         
         background-color: #254741;
@@ -79,7 +79,8 @@ import Logo from "/img/logo_footer.svg"
         @include stuff.textbleak;
         
         margin: 0;
-        margin-left: 0.2rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
     }
 
     .phoneIcon, .emailIcon, .geoIcon {
