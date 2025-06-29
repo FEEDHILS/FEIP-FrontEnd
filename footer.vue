@@ -4,7 +4,9 @@ import Logo from "/img/logo_footer.svg"
 
 <template>
     <div class="root">
-        <Logo alt="zagdom-logo" filled :fontControlled="false" class="logo" height="2.5rem"/>
+        <div class="logo">
+            <Logo alt="zagdom-logo" filled :fontControlled="false" height="2.5rem"/>
+        </div>
 
         <div class="options">
             <a href="">Реализованные проекты</a>
@@ -41,7 +43,7 @@ import Logo from "/img/logo_footer.svg"
 
 <style lang="scss" scoped>
     @use "/stuff.scss" as stuff;
-    $text-gap: max(4vh, 12px); // Отступы в contacts и options
+    $text-gap: max(2em, 12px); // Отступы в contacts и options
 
     .root {
         display: grid;
@@ -89,8 +91,99 @@ import Logo from "/img/logo_footer.svg"
 
     .submitBtn {
         @include stuff.submitBtn;
-
+        
+        font-size: 1em;
         justify-self: right;
         align-self: flex-start;
+    }
+
+
+
+    @include stuff.medium-screen {
+        .root {
+            padding-left: 1%;
+            padding-right: 1%;
+        }
+    }
+
+    @include stuff.small-screen {
+        .root {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: "logo logo"
+                                "options contacts"
+                                ".submitBtn"
+                                ". submitBtn"
+                                ". submitBtn";
+            gap: 2%;
+            column-gap: 5%;
+        }
+
+        .logo {
+            grid-area: logo;
+            justify-self: center;
+        }
+        .options {
+            grid-area: options;
+            justify-self: end;
+            text-align: end;
+        }
+        .contacts {
+            grid-area: contacts;
+        }
+
+        .textbleak {
+            justify-self: end;
+        }
+
+        .submitBtn {
+            grid-area: submitBtn;
+            justify-self: start;
+        }
+
+    }
+
+    @include stuff.tiny-screen {
+        $text-gap: 1rem;
+
+        .options, .number, .email, .geo {
+            p, a {
+                margin: 0;
+                margin-bottom: $text-gap;
+            }
+        }
+
+        .options {
+            padding-top: 1rem;
+            justify-self: start;
+            text-align: start;
+        }
+
+        .contacts {
+            padding-bottom: 1rem;
+        }
+
+        .logo {
+            justify-self: start;
+        }
+
+        .root {
+            grid-template-columns: max-content;
+            grid-auto-rows: max-content;
+            grid-template-areas: "logo" "options" "contacts" "submitBtn";
+            gap: 0;
+            padding-left: 8vw;
+        }
+
+        .textbleak {
+            margin: 0.5rem;
+            margin-left: 0;
+            justify-self: start;
+        }
+
+        .submitBtn {
+            margin-bottom: 2rem;
+        }
+
     }
 </style>

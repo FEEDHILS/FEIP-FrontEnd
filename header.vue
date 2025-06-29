@@ -1,5 +1,11 @@
 <script setup> 
 import Logo from "/img/logo.svg"
+import DrawerIcon from "~/img/drawerIcon.svg";
+import DrawerComponent from "~/drawer.vue"
+
+let isOpen = ref(false);
+
+function OpenDrawer() { isOpen.value = true; console.log("Opened Drawer"); }
 </script>
 
 <template>
@@ -25,9 +31,11 @@ import Logo from "/img/logo.svg"
         
         <button class="submitBtn" type="submit">Оставить заявку</button>
 
-        <div class="drawer-button">
-            <p>tut budet drawer</p>
+        <div >
+            <button class="drawer-button" v-on:click="OpenDrawer()"> <DrawerIcon font-size="1.5rem" /> </button>
         </div>
+
+        <DrawerComponent class="test" v-model:open="isOpen" />
     </div>
 </template>
 
@@ -84,9 +92,25 @@ import Logo from "/img/logo.svg"
 
         .drawer-button {
             display: block;
+            background-color: #029F59;
+            color:white;
+            border-width: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: .3rem;
         }
         .options, .submitBtn {
             display: none;
+        }
+    }
+
+    @include stuff.tiny-screen {
+        .number {
+            display: none;
+        }
+
+        .root {
+            grid-template-columns: max-content auto max-content max-content;
         }
     }
 </style>

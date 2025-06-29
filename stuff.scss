@@ -28,9 +28,13 @@ $secondary-font: Montserrat, sans-serif;
 
 
 @mixin medium-screen {
-  @media (max-width: 820px) { @content; }
+  @media (max-width: 768px) { @content; }
 }
 
 @mixin small-screen {
-  @media (max-width: 576px) { @content; }
+  @media (max-width: 546px) { @content; }
+}
+
+@mixin tiny-screen {
+  @media (max-width: 354px) { @content; }
 }

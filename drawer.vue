@@ -74,8 +74,8 @@ import TeleIcon from "~/img/telephone.svg";
     color:white;
     background-color: #029F59;
 
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 
   .content {
