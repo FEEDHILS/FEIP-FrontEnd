@@ -49,6 +49,7 @@ import TeleIcon from "~/img/telephone.svg";
 </template>
 
 <style lang="scss" scoped>
+  @use "/global.scss" as *;
 
   .backdrop {
     position: fixed;
@@ -71,8 +72,8 @@ import TeleIcon from "~/img/telephone.svg";
     align-items: start;
     
     z-index: 31;
-    color:white;
-    background-color: #029F59;
+    color: $background-color;
+    background-color: $primary-color;
 
     padding-left: 5%;
     padding-right: 5%;
@@ -90,10 +91,11 @@ import TeleIcon from "~/img/telephone.svg";
     align-self: end;
     width: 2.5rem;
     height: 2.5rem;
-    // padding: 8px;
+
     margin-top: 3rem;
     border-width: 0;
     border-radius: .3rem;
+  
     background-color: #FFFFFF33;
     pointer-events: stroke;
   }
@@ -117,15 +119,11 @@ import TeleIcon from "~/img/telephone.svg";
   }
 
   .phoneIcon, .emailIcon, .geoIcon {
-    fill: white;
+    color: $background-color;
     height: 1.1em;
-    background-color: black;
   }
 
   .number, .email, .geo {
-        p, a {
-            margin: 0;
-            margin-bottom: 2rem;
-        }
-    }
+        @include setTextMargins( 0 0 max(2em, 12px) 0 );
+  }
 </style>

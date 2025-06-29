@@ -1,18 +1,32 @@
 $primary-font: "Open Sans", sans-serif;
 $secondary-font: Montserrat, sans-serif;
+$primary-color: #029F59;
+$secondary-color: #254741;
+$background-color: #F5F7F3;
+
+$text-primary: #666666;
+$text-secondary: black;
+
 
 @mixin submitBtn {
   font-family: Montserrat, 'sans-serif';
-  background-color: #029F59;
+  background-color: $primary-color;
   border-radius: .8em;
   border: 0;
-  color: white;
+  color: $background-color;
   padding: 1em 3em;
 }
 
 @mixin textbleak($size: .85em) {
-  color:#a8b5b3;
+  color:$background-color;
+  opacity: 0.5;
   font-size: $size;
+}
+
+@mixin setTextMargins($margin) {
+  p, a {
+    margin: $margin;
+  }
 }
   
 @mixin removeLinkTagStyle() {

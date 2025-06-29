@@ -22,12 +22,12 @@ import FooterComponent from "~/footer.vue"
 </template>
 
 <style lang="scss">
-  @use '/stuff.scss' as *;
+  @use '/global.scss' as *;
   @import '@csstools/normalize.css/opinionated.css';
   
   :root {
   font-family: $secondary-font;
-  font-size: clamp(0.75rem, 1.2vw, 2rem);
+  font-size: max(0.75rem, 1.2vw);
   }
   
   html, body, #__nuxt, .root-app {
@@ -45,10 +45,10 @@ import FooterComponent from "~/footer.vue"
   }
 
   header, footer {
-    font-size: .85rem;
+    font-size: .8rem;
   }
 
-  button {
+  button:hover, a:hover {
     cursor: pointer;
   }
 

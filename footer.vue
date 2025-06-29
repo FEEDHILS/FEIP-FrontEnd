@@ -1,5 +1,10 @@
 <script setup> 
+import SubmitButton from "assets/submitBtn"
+
 import Logo from "/img/logo_footer.svg"
+import GeoIcon from "~/img/geo.svg";
+import EmailIcon from "~/img/email.svg";
+import TeleIcon from "~/img/telephone.svg";
 </script>
 
 <template>
@@ -17,50 +22,54 @@ import Logo from "/img/logo_footer.svg"
         <div class="contacts">
             
             <div class="number">
-                <img src="/img/telephone.png" class="phoneIcon" alt="phoneIcon">
+                <TeleIcon class="green" />
                 <p>+7 (900) 900-90-90</p>
             </div>
 
             <div class="email">
-                <img src="/img/email.png" class="emailIcon" alt="emailIcon">
+                <EmailIcon class="green" />
                 <p>info@gmail.com</p>
             </div>
 
             <div class="geo">
-                <img src="/img/geo.png" class="geoIcon" alt="geoIcon">
+                <GeoIcon class="green" />
                 <p>г. Владивосток <br> ул. Выселкова 49, стр. 3</p>
             </div>
 
         </div>
         
-        <button class="submitBtn">Оставить заявку</button>
+        <SubmitButton class="submitBtn" />
 
         <p class="textbleak">© Загдом, 2021</p>
-        <p class="textbleak">Политика конфиденциальности</p>
-        <p class="textbleak">Пользовательское соглашение</p>
+        <a class="textbleak">Политика конфиденциальности</a>
+        <a class="textbleak">Пользовательское соглашение</a>
     </div>
 </template>
 
 <style lang="scss" scoped>
-    @use "/stuff.scss" as stuff;
-    $text-gap: max(2em, 12px); // Отступы в contacts и options
+    @use "/global.scss" as *;
+
+    .green {
+        color: $primary-color;
+    }
 
     .root {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr max-content;
-        padding: 2rem clamp(.5rem, 6vw, 5rem);
+        grid-template-areas: "logo options contacts submitBtn";
+        --root-padding: 2rem clamp(.5rem, 6vw, 5rem);
+        padding: var(--root-padding);
         
-        background-color: #254741;
-        color:white;
+        background-color: $secondary-color;
+        color: $background-color;
     }
 
-    .options {
-        display: flex;
-        flex-flow: column;
-    }
+    .logo { grid-area: logo; margin-right:1rem; }
+    .options { grid-area: options; }
+    .contacts { grid-area: contacts; }
+    .submitBtn { grid-area: submitBtn; }
 
     .options, .contacts {
-        margin-top: 0.8rem;
+        margin-top: .8rem;
     }
 
     .number, .email, .geo {
@@ -69,44 +78,29 @@ import Logo from "/img/logo_footer.svg"
         gap: .5em;
     }
 
-    // Убрал стандартные отступы от текста, заменил на подходящие
     .options, .number, .email, .geo {
-        p, a {
-            margin: 0;
-            margin-bottom: $text-gap;
-        }
+        @include setTextMargins( 0 0 max(2em, 12px) 0 );
     }
 
     .textbleak {
-        @include stuff.textbleak;
-        
-        margin: 0;
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
+        @include textbleak;
+        margin: 0 .5rem;
     }
 
-    .phoneIcon, .emailIcon, .geoIcon {
-        height: 1.1em;
-    }
-
-    .submitBtn {
-        @include stuff.submitBtn;
-        
-        font-size: 1em;
+    .submitBtn {        
         justify-self: right;
         align-self: flex-start;
     }
 
 
-
-    @include stuff.medium-screen {
+    // Media запросы
+    @include medium-screen {
         .root {
-            padding-left: 1%;
-            padding-right: 1%;
+            --root-padding: 2rem 1%;
         }
     }
 
-    @include stuff.small-screen {
+    @include small-screen {
         .root {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -115,42 +109,31 @@ import Logo from "/img/logo_footer.svg"
                                 ".submitBtn"
                                 ". submitBtn"
                                 ". submitBtn";
-            gap: 2%;
-            column-gap: 5%;
+            gap: 2% 5%;
         }
 
-        .logo {
-            grid-area: logo;
-            justify-self: center;
-        }
         .options {
-            grid-area: options;
             justify-self: end;
             text-align: end;
         }
-        .contacts {
-            grid-area: contacts;
-        }
-
-        .textbleak {
-            justify-self: end;
-        }
-
-        .submitBtn {
-            grid-area: submitBtn;
-            justify-self: start;
-        }
+        
+        .logo { justify-self: center; margin: 0; }
+        .textbleak { justify-self: end; }
+        .submitBtn { justify-self: start; }
 
     }
 
-    @include stuff.tiny-screen {
-        $text-gap: 1rem;
+    @include tiny-screen {
+
+        .root {
+            grid-template-columns: max-content;
+            grid-template-areas: "logo" "options" "contacts" "submitBtn";
+            gap: 0;
+            padding-left: 8vw;
+        }
 
         .options, .number, .email, .geo {
-            p, a {
-                margin: 0;
-                margin-bottom: $text-gap;
-            }
+            @include setTextMargins(0 0 1rem 0);
         }
 
         .options {
@@ -159,21 +142,9 @@ import Logo from "/img/logo_footer.svg"
             text-align: start;
         }
 
-        .contacts {
-            padding-bottom: 1rem;
-        }
+        .contacts { padding-bottom: 1rem; }
 
-        .logo {
-            justify-self: start;
-        }
-
-        .root {
-            grid-template-columns: max-content;
-            grid-auto-rows: max-content;
-            grid-template-areas: "logo" "options" "contacts" "submitBtn";
-            gap: 0;
-            padding-left: 8vw;
-        }
+        .logo { justify-self: start; }
 
         .textbleak {
             margin: 0.5rem;
@@ -181,9 +152,7 @@ import Logo from "/img/logo_footer.svg"
             justify-self: start;
         }
 
-        .submitBtn {
-            margin-bottom: 2rem;
-        }
+        .submitBtn { margin-bottom: 2rem; }
 
     }
 </style>

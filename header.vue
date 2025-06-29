@@ -1,5 +1,8 @@
 <script setup> 
+import SubmitButton from "./assets/submitBtn.vue";
+
 import Logo from "/img/logo.svg"
+import TeleIcon from "/img/telephone.svg"
 import DrawerIcon from "~/img/drawerIcon.svg";
 import DrawerComponent from "~/drawer.vue"
 
@@ -23,13 +26,13 @@ function OpenDrawer() { isOpen.value = true; console.log("Opened Drawer"); }
 
 
         <div class="number">
-            <img src="/img/telephone.png" class="phoneIcon" alt="">
+            <TeleIcon class="phoneIcon"/>
             <p>+7 (900) 900-90-90</p>
         </div>
         
         <div class="spacer-2"></div>
         
-        <button class="submitBtn" type="submit">Оставить заявку</button>
+        <SubmitButton class="submitBtn" />
 
         <div >
             <button class="drawer-button" v-on:click="OpenDrawer()"> <DrawerIcon font-size="1.5rem" /> </button>
@@ -40,28 +43,24 @@ function OpenDrawer() { isOpen.value = true; console.log("Opened Drawer"); }
 </template>
 
 <style lang="scss" scoped>
-    @use "/stuff.scss" as stuff;
-    $header-font-size: 1em;
+    @use "/global.scss" as *;
 
     .root {
         display: grid;
         grid-template-columns: max-content minmax(2rem, 5rem) 1fr max-content 2.5% max-content;
-        font-size: $header-font-size;
+
         align-items: center;
         padding: max(2.5vmin, 16px) 5%;
-        background-color: rgb(224, 224, 224); // лучше видно размеры
-        color: #666666;
+        background-color: $background-color; // лучше видно размеры
+        color: $text-primary;
     }
 
-    .drawer-button {
-        display: none;
-        // visibility:hidden;
-    }
+    .drawer-button { display: none; }
     
     .options {
         display: flex;
-        column-gap: 1.5em;
-        row-gap: 1em;
+
+        gap: 1em 1.5em;
         flex-wrap: wrap;
         white-space: nowrap;
     }
@@ -69,45 +68,43 @@ function OpenDrawer() { isOpen.value = true; console.log("Opened Drawer"); }
     .number {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: .8em;
         margin-left: 5em;
     }
 
-    .phoneIcon {
-        height: 1em;
-    }
+    .phoneIcon { color: $primary-color; }
 
    
-    .submitBtn {
-        @include stuff.submitBtn;
-        font-size: $header-font-size;
-        width: 100%;
-        justify-self: center;
-    }
+    // .submitBtn {
+    //     @include submitBtn;
+    //     font-size: $header-font-size;
+    //     width: 100%;
+    //     justify-self: center;
+    // }
 
-    @include stuff.medium-screen {
+    // Media запросы
+    @include medium-screen {
         .root {
             grid-template-columns: max-content auto max-content 2.5% max-content;
         }
 
         .drawer-button {
             display: block;
-            background-color: #029F59;
-            color:white;
+            background-color: $primary-color;
+            color: $background-color;
             border-width: 0;
+
             width: 2.5rem;
             height: 2.5rem;
             border-radius: .3rem;
         }
-        .options, .submitBtn {
-            display: none;
-        }
+
+        .options, .submitBtn { display: none; }
+
     }
 
-    @include stuff.tiny-screen {
-        .number {
-            display: none;
-        }
+    @include tiny-screen {
+        .number { display: none; }
 
         .root {
             grid-template-columns: max-content auto max-content max-content;
